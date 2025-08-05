@@ -1,10 +1,7 @@
-font-size = 16 
-font-family = "IosevkaTerm Nerd Font"
-font-style = Medium
+font-size = 14
+font-family = "GeistMono Nerd Font"
 font-style-bold = Bold
-font-style-italic = Medium Italic
-font-style-bold-italic = Bold Italic
 shell-integration-features = no-title
 macos-titlebar-proxy-icon = hidden
 title = " "
-theme = "decay"
+theme = Everblush
