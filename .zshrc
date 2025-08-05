@@ -74,4 +74,5 @@ znap eval pyenv-init 'pyenv init - zsh'
 znap eval thefuck-alias 'thefuck --alias'
 
 # Fast prompt initialization (15-40ms)
-eval "$(starship init zsh)"
+znap eval starship 'starship init zsh --print-full-init'
+znap prompt starship/starship
