@@ -61,6 +61,10 @@ znap eval pipx-completions 'register-python-argcomplete pipx'
 alias ls='eza --icons --hyperlink'
 alias ipaddr="ipconfig getifaddr en0"
 
+# History search
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
+
 # Plugin directory
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
 
@@ -68,11 +72,7 @@ zstyle ':znap:*' repos-dir ~/.zsh-plugins
 znap source ajeetdsouza/zoxide
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
-znap source zsh-users/zsh-history-substring-search
-
-# History search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+znap source zsh-users/zsh-completions
 
 # Tool Initializations (znap eval for 10x speed improvement)
 znap eval pyenv-path 'pyenv init --path'
