@@ -28,7 +28,8 @@ PATH="/Users/charon/.nvm/versions/node/v22.12.0/bin:$PATH"
 PATH="/opt/homebrew/bin:$PATH"                                  
 PATH="/opt/homebrew/sbin:$PATH"                                 
 PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"                    
-PATH="/usr/local/bin:$PATH"                                     
+PATH="/usr/local/bin:$PATH"    
+PATH="$HOME/.cargo/bin:$PATH"
 
 # Conditional PATH additions
 if [ -d "$PYENV_ROOT/bin" ]; then
@@ -64,9 +65,14 @@ alias ipaddr="ipconfig getifaddr en0"
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
 
 # Plugins & Extensions
-znap source zsh-users/zsh-autosuggestions
 znap source ajeetdsouza/zoxide
+znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
+znap source zsh-users/zsh-history-substring-search
+
+# History search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # Tool Initializations (znap eval for 10x speed improvement)
 znap eval pyenv-path 'pyenv init --path'
