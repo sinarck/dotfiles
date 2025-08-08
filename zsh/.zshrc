@@ -25,8 +25,7 @@ setopt HIST_SAVE_NO_DUPS
 # Build PATH with proper precedence order
 PATH="$BUN_INSTALL/bin:$PATH"                                    
 PATH="/Users/charon/.nvm/versions/node/v22.12.0/bin:$PATH"      
-PATH="/opt/homebrew/bin:$PATH"                                  
-PATH="/opt/homebrew/sbin:$PATH"                                 
+PATH="/opt/homebrew/bin:$PATH"                                  PATH="/opt/homebrew/sbin:$PATH"                                 
 PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"                    
 PATH="/usr/local/bin:$PATH"    
 PATH="$HOME/.cargo/bin:$PATH"
@@ -76,7 +75,7 @@ znap source zsh-users/zsh-completions
 
 # Tool Initializations (znap eval for 10x speed improvement)
 znap eval pyenv-path 'pyenv init --path'
-znap eval pyenv-init 'pyenv init - zsh'
+znap eval pyenv-init 'pyenv init --zsh'
 znap eval thefuck-alias 'thefuck --alias'
 
 # Fast prompt initialization (15-40ms)
