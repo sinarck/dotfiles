@@ -1,8 +1,0 @@
-font-size = 14
-font-family = "GeistMono Nerd Font"
-font-style = Medium
-font-style-bold = Bold
-shell-integration-features = no-title
-macos-titlebar-proxy-icon = hidden
-title = " "
-theme = Github Dark
