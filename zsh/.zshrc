@@ -13,7 +13,6 @@ export HOMEBREW_NO_ENV_HINTS=1
 export EDITOR="cursor"
 export VISUAL="cursor"
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-export PYENV_ROOT="$HOME/.pyenv"
 export PNPM_HOME="/Users/charon/.local/share/pnpm"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 
@@ -29,11 +28,6 @@ PATH="/opt/homebrew/bin:$PATH"                                  PATH="/opt/homeb
 PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"                    
 PATH="/usr/local/bin:$PATH"    
 PATH="$HOME/.cargo/bin:$PATH"
-
-# Conditional PATH additions
-if [ -d "$PYENV_ROOT/bin" ]; then
-  PATH="$PYENV_ROOT/bin:$PATH"                                  
-fi
 
  # PNPM binaries
 case ":$PATH:" in
@@ -74,10 +68,10 @@ znap source zsh-users/zsh-syntax-highlighting
 znap source zsh-users/zsh-completions
 
 # Tool Initializations (znap eval for 10x speed improvement)
-znap eval pyenv-path 'pyenv init --path'
-znap eval pyenv-init 'pyenv init --zsh'
 znap eval thefuck-alias 'thefuck --alias'
 
 # Fast prompt initialization (15-40ms)
 znap eval starship 'starship init zsh --print-full-init'
 znap prompt starship/starship
+
+. "$HOME/.local/share/../bin/env"
