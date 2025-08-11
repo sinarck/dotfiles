@@ -24,7 +24,8 @@ setopt HIST_SAVE_NO_DUPS
 # Build PATH with proper precedence order
 PATH="$BUN_INSTALL/bin:$PATH"                                    
 PATH="/Users/charon/.nvm/versions/node/v22.12.0/bin:$PATH"      
-PATH="/opt/homebrew/bin:$PATH"                                  PATH="/opt/homebrew/sbin:$PATH"                                 
+PATH="/opt/homebrew/bin:$PATH"                                  
+PATH="/opt/homebrew/sbin:$PATH"                                 
 PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"                    
 PATH="/usr/local/bin:$PATH"    
 PATH="$HOME/.cargo/bin:$PATH"
@@ -51,12 +52,8 @@ fi
 znap eval pipx-completions 'register-python-argcomplete pipx'
 
 # Aliases
-alias ls='eza --icons --hyperlink'
+alias ls='eza --icons --hyperlink -1'
 alias ipaddr="ipconfig getifaddr en0"
-
-# History search
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
 
 # Plugin directory
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
@@ -66,6 +63,16 @@ znap source ajeetdsouza/zoxide
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source zsh-users/zsh-completions
+znap source zsh-users/zsh-history-substring-search
+
+# Subtle, background-free styling to avoid loud highlights
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=default'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=244'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=0.08
+
+# History search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # Tool Initializations (znap eval for 10x speed improvement)
 znap eval thefuck-alias 'thefuck --alias'
@@ -73,5 +80,3 @@ znap eval thefuck-alias 'thefuck --alias'
 # Fast prompt initialization (15-40ms)
 znap eval starship 'starship init zsh --print-full-init'
 znap prompt starship/starship
-
-. "$HOME/.local/share/../bin/env"
