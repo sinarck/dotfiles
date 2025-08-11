@@ -7,3 +7,4 @@ macos-titlebar-proxy-icon = hidden
 title = " "
 theme = Github Dark
 keybind = shift+enter=text:\n
+confirm-close-surface = false
