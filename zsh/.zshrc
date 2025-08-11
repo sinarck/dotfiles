@@ -58,9 +58,6 @@ if [ -s "$BUN_INSTALL/_bun" ]; then
   source "$BUN_INSTALL/_bun"
 fi
 
-# Shell Completions (znap handles compinit automatically)
-znap eval pipx-completions 'register-python-argcomplete pipx'
-
 # Aliases
 alias ls='eza --icons --hyperlink -1'
 alias ipaddr="ipconfig getifaddr en0"
