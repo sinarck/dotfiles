@@ -64,6 +64,7 @@ znap eval pipx-completions 'register-python-argcomplete pipx'
 # Aliases
 alias ls='eza --icons --hyperlink -1'
 alias ipaddr="ipconfig getifaddr en0"
+alias grep="rg"
 
 # Plugin directory
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
@@ -85,6 +86,7 @@ bindkey '^[[B' history-substring-search-down
 
 # Tool Initializations (znap eval for 10x speed improvement)
 znap eval thefuck-alias 'thefuck --alias'
+znap eval zoxide 'zoxide init zsh'
 
 # Fast prompt initialization (15-40ms)
 znap eval starship 'starship init zsh --print-full-init'
