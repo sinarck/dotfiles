@@ -61,7 +61,7 @@ fi
 # Aliases
 alias ls='eza --icons --hyperlink -1'
 alias ipaddr="ipconfig getifaddr en0"
-alias grep="rg"
+alias fetch="fastfetch"
 
 # Plugin directory
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
