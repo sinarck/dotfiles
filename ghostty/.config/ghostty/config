@@ -1,6 +1,5 @@
 font-size = 14
 font-family = "GeistMono NF"
-#font-style = Medium
 font-style-bold = Bold
 shell-integration-features = no-title
 macos-titlebar-proxy-icon = hidden
@@ -8,3 +7,4 @@ title = " "
 theme = Github Dark
 keybind = shift+enter=text:\n
 confirm-close-surface = false
+cursor-style = bar
