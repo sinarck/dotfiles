@@ -5,6 +5,7 @@ shell-integration-features = no-title
 macos-titlebar-proxy-icon = hidden
 title = " "
 theme = Github Dark
+quick-terminal-position = center
 keybind = shift+enter=text:\n
 confirm-close-surface = false
 cursor-style = bar
