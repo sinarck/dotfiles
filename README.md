@@ -7,6 +7,7 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 This repository contains configuration files organized as Stow packages:
 
 - **`ghostty/`** - [Ghostty terminal emulator](https://mitchellh.com/ghostty) configuration
+- **`git/`** - Git global configuration with SSH signing and LFS support
 - **`starship/`** - [Starship cross-shell prompt](https://starship.rs/) configuration  
 - **`zsh/`** - Zsh shell configuration with znap plugin manager
 
@@ -48,6 +49,7 @@ stow */
 stow zsh
 stow starship
 stow ghostty
+stow git
 ```
 
 ## Package Details
@@ -66,6 +68,15 @@ stow ghostty
   - Custom prompt format with Git branch, directory, and runtime information
   - Support for multiple programming languages (Python, Node.js, Rust, Java, etc.)
   - Command duration display
+
+### Git (`git/`)
+- **Location**: `~/.gitconfig`
+- **Features**:
+  - SSH-based commit signing configuration
+  - Git LFS (Large File Storage) support
+  - Auto-setup remote for push operations
+  - Repository maintenance configuration
+  - Includes private gitconfig for sensitive settings
 
 ### Ghostty (`ghostty/`)
 - **Location**: `~/.config/ghostty/config`
