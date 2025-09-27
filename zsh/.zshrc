@@ -3,6 +3,7 @@ if [[ ! -f $HOME/.zsh-snap/znap.zsh ]]; then
   mkdir -p $HOME/.zsh-snap &&
     git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git $HOME/.zsh-snap
 fi
+
 source $HOME/.zsh-snap/znap.zsh
 
 # Environment Variables
@@ -12,7 +13,6 @@ export HOMEBREW_NO_INSTALL_UPGRADE=1
 export HOMEBREW_NO_ENV_HINTS=1
 export EDITOR="cursor"
 export VISUAL="cursor"
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 export PNPM_HOME="/Users/charon/.local/share/pnpm"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 
@@ -22,23 +22,31 @@ export SAVEHIST=10000
 setopt HIST_SAVE_NO_DUPS
 
 # Build PATH with proper precedence order
-PATH="$BUN_INSTALL/bin:$PATH"                                    
-PATH="/opt/homebrew/bin:$PATH"                                  
-PATH="/opt/homebrew/sbin:$PATH"                                 
-PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"                    
-PATH="/usr/local/bin:$PATH"    
+PATH="$BUN_INSTALL/bin:$PATH"
+PATH="/opt/homebrew/bin:$PATH"
+PATH="/opt/homebrew/sbin:$PATH"
+PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
+PATH="/usr/local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 
  # PNPM binaries
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
-  *) PATH="$PNPM_HOME:$PATH" ;;                                
+  *) PATH="$PNPM_HOME:$PATH" ;;
 esac
 
 # User and system PATH additions
-PATH="$PATH:/Users/charon/.local/bin"                          
+PATH="$PATH:/Users/charon/.local/bin"
 PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
-PATH="$PATH:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Applications/iTerm.app/Contents/Resources/utilities"
+
+# System and application paths
+PATH="$PATH:/System/Cryptexes/App/usr/bin"
+PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin"
+PATH="$PATH:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+PATH="$PATH:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+PATH="$PATH:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+PATH="$PATH:/Library/Apple/usr/bin"
+PATH="$PATH:/Applications/iTerm.app/Contents/Resources/utilities"
 
 export PATH
 
@@ -62,6 +70,7 @@ fi
 alias ls='eza --icons --hyperlink -1'
 alias ipaddr="ipconfig getifaddr en0"
 alias fetch="fastfetch"
+alias c="clear"
 
 # Plugin directory
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
@@ -88,3 +97,10 @@ znap eval zoxide 'zoxide init zsh'
 # Fast prompt initialization (15-40ms)
 znap eval starship 'starship init zsh --print-full-init'
 znap prompt starship/starship
+
+# SDKMAN (Java/Kotlin/Gradle version management)
+export SDKMAN_DIR="$HOME/.sdkman"
+if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
+  znap eval sdkman 'sdk version 2>&1 | sed "1,2d;4d" | sed "s/^/export /"'
+  source "$SDKMAN_DIR/bin/sdkman-init.sh"
+fi
