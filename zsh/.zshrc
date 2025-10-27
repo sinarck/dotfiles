@@ -1,4 +1,4 @@
-# znap: Fastest Zsh plugin manager
+# Install plugin manager if necessary
 if [[ ! -f $HOME/.zsh-snap/znap.zsh ]]; then
   mkdir -p $HOME/.zsh-snap &&
     git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git $HOME/.zsh-snap
@@ -52,11 +52,13 @@ export PATH
 
 # Node Version Manager (nvm)
 export NVM_DIR="$HOME/.nvm"
+
 if [[ -s "$NVM_DIR/nvm.sh" ]]; then
   source "$NVM_DIR/nvm.sh" --no-use
 elif type brew >/dev/null 2>&1 && [[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ]]; then
   source "$(brew --prefix)/opt/nvm/nvm.sh" --no-use
 fi
+
 if [[ -s "$NVM_DIR/bash_completion" ]]; then
   source "$NVM_DIR/bash_completion"
 fi
@@ -90,7 +92,7 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=0.08
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Tool Initializations (znap eval for 10x speed improvement)
+# Tool Initializations 
 znap eval thefuck-alias 'thefuck --alias'
 znap eval zoxide 'zoxide init zsh'
 
