@@ -3,6 +3,8 @@ format = """\
 $username\
 $os\
 $git_branch\
+$git_commit\
+$git_state\
 (\
     at \
     $directory\
@@ -18,7 +20,9 @@ $cmd_duration\
     $c\
     $rust\
     $java\
-)
+    $golang\
+)\
+$package
 [╰─](fg:arrow)$character\
 """
 # Add the modules you need
@@ -42,13 +46,13 @@ conda = "#81c19b"
 java = "#e8646a"
 rust = "#de8f78"
 bun = "#c58cec"
+golang = "#70b8ca"
 clang = "#70b8ca"
 swift = "#709ad2"
 duration = "#df5b61"
+package = "#c58cec"
 text_color = "#edeff0"
 text_light = "#0c0e0f"
-
-# I disabled some modules (Rust, Java...) since some things aren't installed in my machine, enable them if you need.
 
 [username]
 style_user = 'bold os'
@@ -85,7 +89,7 @@ error_symbol = "[󰍟](fg:red)"
 
 [directory]
 format = "[$path](bold $style)[$read_only]($read_only_style) "
-truncation_length = 2
+truncation_length = 3
 style = "fg:directory"
 read_only_style = "fg:directory"
 before_repo_root_style = "fg:directory"
@@ -110,16 +114,35 @@ style = "bold fg:git"
 symbol = " "
 
 [git_status]
-format = '[ $all_status$ahead_behind ]($style)'
-style = "fg:text_color bg:git"
-disabled = true
+format = '([$all_status$ahead_behind]($style) )'
+style = "fg:git"
+disabled = false
+
+[git_commit]
+format = '[\($hash$tag\)]($style) '
+style = "fg:git"
+tag_symbol = " 🏷 "
+only_detached = true
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+style = "bold fg:duration"
+
+[package]
+format = '[ $symbol($version) ]($style)'
+style = "bg:package fg:text_light"
+symbol = "v"
+disabled = false
+
+[golang]
+format = '[ $symbol$version ]($style)'
+style = "bg:golang fg:text_light"
+symbol = " "
+disabled = false
 
 [docker_context]
 disabled=true
 symbol = " "
-
-[package]
-disabled=true
 
 [fill]
 symbol = " "
@@ -164,7 +187,7 @@ format ="[ $symbol$version ]($style)"
 style = "bg:rust fg:text_light"
 symbol = " "
 version_format = "${raw}"
-disabled=true
+disabled=false
 
 [bun]
 format = "[ $symbol$version ]($style)"
