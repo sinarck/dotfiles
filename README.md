@@ -1,112 +1,62 @@
 # Dotfiles
 
-Personal configuration files managed with [GNU Stow](https://www.gnu.org/software/stow/).
+My configs, managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
-## Structure
+Theme colors based on [Yoru](https://github.com/raexera/yoru) by [@raexera](https://github.com/raexera).
 
-This repository contains configuration files organized as Stow packages:
+## What's Here
 
-- **`ghostty/`** - [Ghostty terminal emulator](https://mitchellh.com/ghostty) configuration
-- **`git/`** - Git global configuration with SSH signing and LFS support
-- **`starship/`** - [Starship cross-shell prompt](https://starship.rs/) configuration  
-- **`zsh/`** - Zsh shell configuration with znap plugin manager
+- **`bat/`** - Syntax highlighting with custom Yoru theme
+- **`ghostty/`** - Terminal config with Yoru theme
+- **`git/`** - Git config with SSH signing
+- **`starship/`** - Prompt with Yoru colors
+- **`zsh/`** - Shell config with znap and lazy loading
 
-## Installation
+## Setup
 
-### Prerequisites
-
-- [GNU Stow](https://www.gnu.org/software/stow/)
-- [Zsh](https://zsh.sourceforge.io/)
-- [Starship](https://starship.rs/)
-- [Ghostty](https://mitchellh.com/ghostty) (optional)
-
-Install GNU Stow:
 ```bash
-# macOS
-brew install stow
-
-# Ubuntu/Debian
-sudo apt install stow
-
-# Arch Linux
-sudo pacman -S stow
-```
-
-### Setup
-
-1. Clone this repository to your home directory:
-```bash
+# Clone
 git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-```
 
-2. Use Stow to symlink configurations:
-```bash
-# Install all configurations
+# Stow everything
 stow */
 
-# Or install specific packages
-stow zsh
-stow starship
-stow ghostty
-stow git
+# Or pick what you want
+stow zsh starship ghostty
 ```
 
-## Package Details
+You'll need `stow` installed first (`brew install stow` on Mac).
 
-### Zsh (`zsh/`)
-- **Location**: `~/.zshrc`
-- **Features**:
-  - [znap](https://github.com/marlonrichert/zsh-snap) plugin manager for fast Zsh startup
-  - Environment variables for development tools (Homebrew, Node.js, Python, Java, Android)
-  - History configuration
-  - Path configuration for various tools
+## Details
 
-### Starship (`starship/`)
-- **Location**: `~/.config/starship.toml`
-- **Features**:
-  - Custom prompt format with Git branch, directory, and runtime information
-  - Support for multiple programming languages (Python, Node.js, Rust, Java, etc.)
-  - Command duration display
+### Zsh
+- znap plugin manager with lazy-loaded nvm and sdkman
+- 1M+ history with smart deduplication
+- Yoru-themed syntax highlighting and completions
+- Custom LS_COLORS for eza
 
-### Git (`git/`)
-- **Location**: `~/.gitconfig`
-- **Features**:
-  - SSH-based commit signing configuration
-  - Git LFS (Large File Storage) support
-  - Auto-setup remote for push operations
-  - Repository maintenance configuration
-  - Includes private gitconfig for sensitive settings
+### Bat
+- Custom Yoru theme for syntax highlighting
+- Nice defaults with line numbers
 
-### Ghostty (`ghostty/`)
-- **Location**: `~/.config/ghostty/config`
-- **Features**:
-  - GeistMono NF font at 14pt
-  - GitHub Dark theme
-  - macOS-specific titlebar configuration
-  - Custom keybindings
+### Starship
+- Minimal two-line prompt
+- Yoru color palette throughout
+- Shows git, language versions, and command duration
 
-## Usage
+### Ghostty
+- GeistMono NF font
+- Custom Yoru theme in `themes/yoru`
+- Clean titlebar on macOS
 
-After installation, restart your terminal or source your shell configuration:
-```bash
-source ~/.zshrc
-```
+### Git
+- SSH commit signing
+- Git LFS enabled
+- Pulls in private config for user details
 
-## Uninstalling
+## Notes
 
-To remove symlinks for a specific package:
-```bash
-cd ~/.dotfiles
-stow -D packagename
-```
+To remove configs: `stow -D packagename`
 
-To remove all symlinks:
-```bash
-cd ~/.dotfiles
-stow -D */
-```
-
-## Customization
-
-Each package can be customized by editing the files in their respective directories. Changes will be reflected immediately since Stow creates symlinks to the original files.
+Files are symlinked, so edits here update immediately.
