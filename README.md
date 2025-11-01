@@ -7,6 +7,7 @@ Theme colors based on [Yoru](https://github.com/raexera/yoru) by [@raexera](http
 ## What's Here
 
 - **`bat/`** - Syntax highlighting with custom Yoru theme
+- **`fastfetch/`** - System info display with Yoru colors
 - **`ghostty/`** - Terminal config with Yoru theme
 - **`git/`** - Git config with SSH signing
 - **`starship/`** - Prompt with Yoru colors
@@ -39,6 +40,11 @@ You'll need `stow` installed first (`brew install stow` on Mac).
 ### Bat
 - Custom Yoru theme for syntax highlighting
 - Nice defaults with line numbers
+
+### Fastfetch
+- Color-coded system info modules
+- Compact display with small logo
+- Shows OS, kernel, host, disk, battery, and memory
 
 ### Starship
 - Minimal two-line prompt
