@@ -52,9 +52,6 @@ path=(
   /Applications/iTerm.app/Contents/Resources/utilities(N)
 )
 
-# Completions
-[[ -s $BUN_INSTALL/_bun ]] && source $BUN_INSTALL/_bun
-
 # Colors and syntax highlighting styles
 [[ -r ~/.config/zsh/colors.zsh ]] && source ~/.config/zsh/colors.zsh
 
@@ -101,3 +98,4 @@ znap function fuck 'znap eval thefuck-alias "thefuck --alias"'
 
 # Prompt
 znap eval starship 'starship init zsh --print-full-init'
+
