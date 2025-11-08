@@ -79,10 +79,9 @@ zstyle ':completion:*:warnings' format '%F{#df5b61}No matches found%f'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # Plugins
-znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-history-substring-search
-znap source zsh-users/zsh-syntax-highlighting
+znap source zdharma-continuum/fast-syntax-highlighting
 
 # Arrow keys search history
 bindkey '^[[A' history-substring-search-up

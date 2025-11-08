@@ -10,6 +10,7 @@ Theme colors based on [Yoru](https://github.com/raexera/yoru) by [@raexera](http
 - **`fastfetch/`** - System info display with Yoru colors
 - **`ghostty/`** - Terminal config with Yoru theme
 - **`git/`** - Git config with SSH signing
+- **`opencode/`** - AI coding assistant with custom Yoru theme
 - **`starship/`** - Prompt with Yoru colors
 - **`zsh/`** - Shell config with znap and lazy loading
 
@@ -60,6 +61,11 @@ You'll need `stow` installed first (`brew install stow` on Mac).
 - SSH commit signing
 - Git LFS enabled
 - Pulls in private config for user details
+
+### Opencode
+- Custom Yoru theme for consistent visual experience
+- Modern color palette with enhanced contrast
+- Syntax highlighting optimized for readability
 
 ## Notes
 
