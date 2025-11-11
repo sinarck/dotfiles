@@ -87,8 +87,9 @@ znap source zdharma-continuum/fast-syntax-highlighting
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Smart directory jumping
+# Tools
 znap eval zoxide 'zoxide init zsh'
+znap eval try 'ruby ~/.local/try.rb init ~/src/tries'
 
 # Lazy-load heavy tools on first use
 znap function nvm 'source "$NVM_DIR/nvm.sh"'
