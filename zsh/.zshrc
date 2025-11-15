@@ -15,6 +15,7 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export NVM_DIR="$HOME/.nvm"
 export SDKMAN_DIR="$HOME/.sdkman"
+export QMK_HOME="~/qmk_firmware"
 
 # History settings
 export HISTFILE="$HOME/.zsh_history"
@@ -38,6 +39,17 @@ setopt AUTO_PUSHD                # Make cd push old directory onto stack
 setopt PUSHD_IGNORE_DUPS         # Don't push duplicate directories
 setopt PUSHD_SILENT              # Don't print directory stack after pushd/popd
 
+# Speed improvements
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+DISABLE_COMPFIX="true"
+
+# Prompt configuration
+SPACESHIP_PROMPT_ASYNC=true
+SPACESHIP_PROMPT_ADD_NEWLINE=true
+
 # PATH setup (N qualifier skips non-existent directories)
 path=(
   $BUN_INSTALL/bin(N)
@@ -56,9 +68,9 @@ path=(
 [[ -r ~/.config/zsh/colors.zsh ]] && source ~/.config/zsh/colors.zsh
 
 # Command aliases
-alias ls='eza --icons --hyperlink -1'
-alias ll='eza --icons --hyperlink -l'
-alias la='eza --icons --hyperlink -la'
+alias ls='eza --icons -1'
+alias ll='eza --icons -l'
+alias la='eza --icons -la'
 alias tree='eza --tree --icons'
 alias cat='bat --style=plain'
 alias ipaddr='ipconfig getifaddr en0'
@@ -89,7 +101,7 @@ bindkey '^[[B' history-substring-search-down
 
 # Tools
 znap eval zoxide 'zoxide init zsh'
-znap eval try 'ruby ~/.local/try.rb init ~/src/tries'
+znap eval try 'ruby ~/.local/try.rb init ~/Developer/tries'
 
 # Lazy-load heavy tools on first use
 znap function nvm 'source "$NVM_DIR/nvm.sh"'
@@ -98,4 +110,3 @@ znap function fuck 'znap eval thefuck-alias "thefuck --alias"'
 
 # Prompt
 znap eval starship 'starship init zsh --print-full-init'
-
