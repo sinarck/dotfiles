@@ -78,6 +78,7 @@ alias fetch='fastfetch'
 alias c='clear'
 alias ga='git add'
 alias gaa='git add --all'
+alias spot="spotify_player"
 
 # Znap manages plugins from this directory
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
@@ -110,3 +111,6 @@ znap function fuck 'znap eval thefuck-alias "thefuck --alias"'
 
 # Prompt
 znap eval starship 'starship init zsh --print-full-init'
+
+# bun completions
+[ -s "/Users/charon/.bun/_bun" ] && source "/Users/charon/.bun/_bun"

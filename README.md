@@ -1,16 +1,16 @@
 # Dotfiles
 
-My configs, managed with [GNU Stow](https://www.gnu.org/software/stow/).
-
-Theme colors based on [Yoru](https://github.com/raexera/yoru) by [@raexera](https://github.com/raexera).
+Miscellaenous configuration files managed with [GNU Stow](https://www.gnu.org/software/stow/), with theme color based on [Yoru](https://github.com/raexera/yoru) by [@raexera](https://github.com/raexera).
 
 ## What's Here
 
 - **`bat/`** - Syntax highlighting with custom Yoru theme
+- **`chrome/`** - Chrome browser theme
 - **`fastfetch/`** - System info display with Yoru colors
 - **`ghostty/`** - Terminal config with Yoru theme
-- **`git/`** - Git config with SSH signing
+- **`git/`** - Basic setup and SSH config
 - **`opencode/`** - AI coding assistant with custom Yoru theme
+- **`spotify-player/`** - Terminal Spotify player with Yoru theme
 - **`starship/`** - Prompt with Yoru colors
 - **`zsh/`** - Shell config with znap and lazy loading
 
@@ -66,6 +66,17 @@ You'll need `stow` installed first (`brew install stow` on Mac).
 - Custom Yoru theme for consistent visual experience
 - Modern color palette with enhanced contrast
 - Syntax highlighting optimized for readability
+
+### Spotify-player
+- Terminal-based Spotify player
+- Full Yoru color theme integration
+- Consistent with other Yoru-themed applications
+- Use `spot` alias to launch
+
+### Chrome
+- Custom Yoru theme for Chrome/Chromium browsers
+- Full theme manifest with comprehensive color definitions
+- Covers frame, toolbar, tabs, NTP, and UI elements
 
 ## Notes
 
