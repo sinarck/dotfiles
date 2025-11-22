@@ -1,11 +1,8 @@
 font-size = 14
 font-family = "GeistMono NF"
-font-style-bold = Bold
-shell-integration-features = no-title
-macos-titlebar-proxy-icon = hidden
-title = " "
+window-title-font-family = "Geist"
 theme = yoru
-quick-terminal-position = center
 keybind = shift+enter=text:\n
-confirm-close-surface = false
+window-save-state = always
+macos-icon = glass
 cursor-style = bar
