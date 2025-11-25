@@ -25,11 +25,9 @@ $cmd_duration\
 $package
 [╰─](fg:arrow)$character\
 """
-# Add the modules you need
 
 # Disable the blank line at the start of the prompt
 add_newline = true
-
 palette = "normal"
 
 [palettes.normal]
@@ -103,30 +101,10 @@ format = "at [󱑈 $time]($style)"
 time_format = "%H:%M"
 style = "bold fg:time"
 
-[cmd_duration]
-format = "took [ $duration]($style) "
-style = "bold fg:duration"
-min_time = 500
-
 [git_branch]
 format = "via [$symbol$branch]($style) "
 style = "bold fg:git"
 symbol = " "
-
-[git_status]
-format = '([$all_status$ahead_behind]($style) )'
-style = "fg:git"
-disabled = false
-
-[git_commit]
-format = '[\($hash$tag\)]($style) '
-style = "fg:git"
-tag_symbol = " 🏷 "
-only_detached = true
-
-[git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
-style = "bold fg:duration"
 
 [package]
 format = '[ $symbol($version) ]($style)'
@@ -138,7 +116,7 @@ disabled = false
 format = '[ $symbol$version ]($style)'
 style = "bg:golang fg:text_light"
 symbol = " "
-disabled = false
+disabled = true
 
 [docker_context]
 disabled=true
@@ -165,7 +143,7 @@ style = "bg:python fg:text_light"
 format = "[ $symbol$environment ]($style)"
 style = "bg:conda fg:text_light"
 ignore_base = false
-disabled = false
+disabled = true
 symbol = " "
 
 [java]
@@ -187,7 +165,7 @@ format ="[ $symbol$version ]($style)"
 style = "bg:rust fg:text_light"
 symbol = " "
 version_format = "${raw}"
-disabled=false
+disabled=true
 
 [bun]
 format = "[ $symbol$version ]($style)"
