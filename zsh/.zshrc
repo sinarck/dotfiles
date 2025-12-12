@@ -9,8 +9,8 @@ export BUN_INSTALL="$HOME/.bun"
 export XDG_CONFIG_HOME="$HOME/.config"
 export HOMEBREW_NO_INSTALL_UPGRADE=1
 export HOMEBREW_NO_ENV_HINTS=1
-export EDITOR="cursor"
-export VISUAL="cursor"
+export EDITOR="zed"
+export VISUAL="zed"
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export NVM_DIR="$HOME/.nvm"
@@ -79,6 +79,7 @@ alias c='clear'
 alias ga='git add'
 alias gaa='git add --all'
 alias spot="spotify_player"
+alias localserve="bpx live-server --port=5500 ."
 
 # Znap manages plugins from this directory
 zstyle ':znap:*' repos-dir ~/.zsh-plugins

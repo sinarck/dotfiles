@@ -1,3 +1,7 @@
 .DS_Store
 *.rayconfig
 .claude
+chrome/.config/chrome/yoru-theme.pem
+*.pem
+*.pak
+*.crx
