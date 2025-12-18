@@ -76,10 +76,24 @@ alias cat='bat --style=plain'
 alias ipaddr='ipconfig getifaddr en0'
 alias fetch='fastfetch'
 alias c='clear'
-alias ga='git add'
-alias gaa='git add --all'
 alias spot="spotify_player"
 alias localserve="bpx live-server --port=5500 ."
+
+# Git aliases
+alias ga="git add"
+alias gaa="git add ."
+alias gcm="git commit -m"
+alias gp="git push"
+alias gg="git add "
+alias gs="git status"
+alias gst="git stash"
+alias gstp="git stash pop"
+
+gall() {
+  git add .
+  git commit -m "$@"
+  git push
+}
 
 # Znap manages plugins from this directory
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
