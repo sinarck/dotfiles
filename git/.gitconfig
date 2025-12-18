@@ -18,3 +18,5 @@
 	repo = /Users/charon/.zsh-plugins/ajeetdsouza/zoxide
 	repo = /Users/charon/.zsh-plugins/zsh-users/zsh-autosuggestions
 	repo = /Users/charon/.zsh-plugins/zsh-users/zsh-syntax-highlighting
+[coderabbit]
+	machineId = cli/b696043e7ff24d79a3da23e9a083f6c1
