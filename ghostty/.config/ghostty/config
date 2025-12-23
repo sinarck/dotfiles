@@ -4,5 +4,5 @@ window-title-font-family = "Geist"
 theme = yoru
 keybind = shift+enter=text:\n
 window-save-state = always
-macos-icon = glass
 cursor-style = bar
+macos-custom-icon = '~/.config/ghostty/icon.icns'

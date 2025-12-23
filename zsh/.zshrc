@@ -82,18 +82,12 @@ alias localserve="bpx live-server --port=5500 ."
 # Git aliases
 alias ga="git add"
 alias gaa="git add ."
-alias gcm="git commit -m"
+alias gcm="git commit -am"
 alias gp="git push"
 alias gg="git add "
 alias gs="git status"
 alias gst="git stash"
 alias gstp="git stash pop"
-
-gall() {
-  git add .
-  git commit -m "$@"
-  git push
-}
 
 # Znap manages plugins from this directory
 zstyle ':znap:*' repos-dir ~/.zsh-plugins
