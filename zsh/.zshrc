@@ -60,6 +60,7 @@ path=(
   $PNPM_HOME(N)
   $path
   $HOME/.local/bin(N)
+  $HOME/.termcast/compiled/tuitube/bin(N)  
   $ANDROID_HOME/{emulator,platform-tools}(N)
   /Applications/iTerm.app/Contents/Resources/utilities(N)
 )
@@ -123,3 +124,6 @@ znap eval starship 'starship init zsh --print-full-init'
 
 # bun completions
 [ -s "/Users/charon/.bun/_bun" ] && source "/Users/charon/.bun/_bun"
+
+# tuitube
+export PATH=/Users/charon/.termcast/compiled/tuitube/bin:$PATH
