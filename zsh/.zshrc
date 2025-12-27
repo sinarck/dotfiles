@@ -122,8 +122,5 @@ znap function fuck 'znap eval thefuck-alias "thefuck --alias"'
 # Prompt
 znap eval starship 'starship init zsh --print-full-init'
 
-# bun completions
+# Completions
 [ -s "/Users/charon/.bun/_bun" ] && source "/Users/charon/.bun/_bun"
-
-# tuitube
-export PATH=/Users/charon/.termcast/compiled/tuitube/bin:$PATH
