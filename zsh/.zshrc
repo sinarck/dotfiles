@@ -4,6 +4,16 @@
     https://github.com/marlonrichert/zsh-snap.git ~/.zsh-snap
 source ~/.zsh-snap/znap.zsh
 
+# Prompt
+znap eval starship 'starship init zsh --print-full-init'
+
+# Speed improvements (set early)
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+DISABLE_COMPFIX="true"
+
 # Development tools and language managers
 export BUN_INSTALL="$HOME/.bun"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -21,34 +31,23 @@ export QMK_HOME="~/qmk_firmware"
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
-setopt EXTENDED_HISTORY          # Record timestamp of command
-setopt INC_APPEND_HISTORY        # Write immediately, not on shell exit
-setopt SHARE_HISTORY             # Share history between all sessions
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicates first
-setopt HIST_IGNORE_DUPS          # Don't record duplicate consecutive commands
-setopt HIST_IGNORE_ALL_DUPS      # Delete old duplicate entries
-setopt HIST_FIND_NO_DUPS         # Don't display duplicates when searching
-setopt HIST_IGNORE_SPACE         # Don't record commands starting with space
-setopt HIST_SAVE_NO_DUPS         # Don't write duplicates to history file
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks
-setopt HIST_VERIFY               # Don't execute immediately on history expansion
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
 
 # Directory navigation
-setopt AUTO_CD                   # Type directory name to cd into it
-setopt AUTO_PUSHD                # Make cd push old directory onto stack
-setopt PUSHD_IGNORE_DUPS         # Don't push duplicate directories
-setopt PUSHD_SILENT              # Don't print directory stack after pushd/popd
-
-# Speed improvements
-DISABLE_AUTO_UPDATE="true"
-DISABLE_MAGIC_FUNCTIONS="true"
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-DISABLE_COMPFIX="true"
-
-# Prompt configuration
-SPACESHIP_PROMPT_ASYNC=true
-SPACESHIP_PROMPT_ADD_NEWLINE=true
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
 
 # PATH setup (N qualifier skips non-existent directories)
 path=(
@@ -60,13 +59,47 @@ path=(
   $PNPM_HOME(N)
   $path
   $HOME/.local/bin(N)
-  $HOME/.termcast/compiled/tuitube/bin(N)  
   $ANDROID_HOME/{emulator,platform-tools}(N)
   /Applications/iTerm.app/Contents/Resources/utilities(N)
 )
 
-# Colors and syntax highlighting styles
-[[ -r ~/.config/zsh/colors.zsh ]] && source ~/.config/zsh/colors.zsh
+# Znap repos directory
+zstyle ':znap:*' repos-dir ~/.zsh-plugins
+
+# Tab completion styles (before plugins)
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%F{#e79881}%B%d%b%f'
+zstyle ':completion:*:warnings' format '%F{#df5b61}No matches found%f'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# Colors (cached)
+[[ -r ~/.config/zsh/colors.zsh ]] && znap eval colors 'cat ~/.config/zsh/colors.zsh'
+
+# Plugins
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-history-substring-search
+znap source zdharma-continuum/fast-syntax-highlighting
+
+# Arrow keys search history
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# Cached evals
+znap eval zoxide 'zoxide init zsh'
+znap eval try 'ruby ~/.local/try.rb init ~/Developer/tries'
+znap eval bun-completion 'cat "$HOME/.bun/_bun"'
+
+# Lazy-load heavy tools on first use
+znap function _nvm nvm 'source "$NVM_DIR/nvm.sh"'
+compctl -K _nvm nvm
+
+znap function _sdk sdk 'source "$SDKMAN_DIR/bin/sdkman-init.sh"'
+compctl -K _sdk sdk
+
+znap function _fuck fuck 'znap eval thefuck-alias "thefuck --alias"'
+compctl -K _fuck fuck
 
 # Command aliases
 alias ls='eza --icons -1'
@@ -90,37 +123,5 @@ alias gs="git status"
 alias gst="git stash"
 alias gstp="git stash pop"
 
-# Znap manages plugins from this directory
-zstyle ':znap:*' repos-dir ~/.zsh-plugins
-
-# Tab completion styles
-zstyle ':completion:*' menu select
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*:descriptions' format '%F{#e79881}%B%d%b%f'
-zstyle ':completion:*:warnings' format '%F{#df5b61}No matches found%f'
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-
-# Plugins
-znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-history-substring-search
-znap source zdharma-continuum/fast-syntax-highlighting
-
-# Arrow keys search history
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# Tools
-znap eval zoxide 'zoxide init zsh'
-znap eval try 'ruby ~/.local/try.rb init ~/Developer/tries'
-
-# Lazy-load heavy tools on first use
-znap function nvm 'source "$NVM_DIR/nvm.sh"'
-znap function sdk 'source "$SDKMAN_DIR/bin/sdkman-init.sh"'
-znap function fuck 'znap eval thefuck-alias "thefuck --alias"'
-
-# Prompt
-znap eval starship 'starship init zsh --print-full-init'
-
-# Completions
+# bun completions
 [ -s "/Users/charon/.bun/_bun" ] && source "/Users/charon/.bun/_bun"
