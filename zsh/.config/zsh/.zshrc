@@ -1,8 +1,8 @@
 # Znap plugin manager
-[[ -r ~/.zsh-snap/znap.zsh ]] ||
+[[ -r $ZDOTDIR/.zsh-snap/znap.zsh ]] ||
   git clone --depth 1 -- \
-    https://github.com/marlonrichert/zsh-snap.git ~/.zsh-snap
-source ~/.zsh-snap/znap.zsh
+    https://github.com/marlonrichert/zsh-snap.git $ZDOTDIR/.zsh-snap
+source $ZDOTDIR/.zsh-snap/znap.zsh
 
 # Prompt
 znap eval starship 'starship init zsh --print-full-init'
@@ -28,7 +28,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export QMK_HOME="~/qmk_firmware"
 
 # History settings
-export HISTFILE="$HOME/.zsh_history"
+export HISTFILE="$ZDOTDIR/.zsh_history"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 setopt EXTENDED_HISTORY
@@ -41,7 +41,6 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY
 
 # Directory navigation
 setopt AUTO_CD
@@ -64,7 +63,7 @@ path=(
 )
 
 # Znap repos directory
-zstyle ':znap:*' repos-dir ~/.zsh-plugins
+zstyle ':znap:*' repos-dir $ZDOTDIR/.zsh-plugins
 
 # Tab completion styles (before plugins)
 zstyle ':completion:*' menu select
@@ -74,8 +73,46 @@ zstyle ':completion:*:descriptions' format '%F{#e79881}%B%d%b%f'
 zstyle ':completion:*:warnings' format '%F{#df5b61}No matches found%f'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-# Colors (cached)
-[[ -r ~/.config/zsh/colors.zsh ]] && znap eval colors 'cat ~/.config/zsh/colors.zsh'
+# Colors (Yoru theme)
+local -a _ls_colors=(
+  'di=38;5;110'   # directory
+  'ln=38;5;117'   # symlink
+  'so=38;5;223'   # socket
+  'pi=38;5;223'   # pipe
+  'ex=38;5;150'   # executable
+  'bd=38;5;217'   # block device
+  'cd=38;5;217'   # char device
+  'su=38;5;204'   # setuid
+  'sg=38;5;204'   # setgid
+  'tw=38;5;110'   # sticky + other-writable
+  'ow=38;5;110'   # other-writable
+  '*.txt=38;5;253' '*.md=38;5;223'
+  '*.json=38;5;223' '*.js=38;5;150' '*.ts=38;5;150'
+  '*.py=38;5;223' '*.sh=38;5;150' '*.rs=38;5;223'
+  '*.go=38;5;117' '*.java=38;5;204'
+  '*.zip=38;5;204' '*.tar=38;5;204' '*.gz=38;5;204'
+)
+export LS_COLORS="${(j.:.)_ls_colors}"
+export EZA_COLORS="da=38;5;244:sb=38;5;244:sn=38;5;244:uu=38;5;150:un=38;5;204:gu=38;5;150:gn=38;5;204"
+typeset -gA ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[default]='fg=#edeff0'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#df5b61'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#c58cec'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#81c19b'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#81c19b'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#709ad2'
+ZSH_HIGHLIGHT_STYLES[command]='fg=#81c19b'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=#70b8ca'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#e79881'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#709ad2,underline'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=#e79881'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#de8f78'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#de8f78'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#2c2e2f'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#2c2e2f'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=#edeff0,bg=#2c2e2f'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=#df5b61'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=0.08
 
 # Plugins
 znap source zsh-users/zsh-autosuggestions
@@ -122,6 +159,3 @@ alias gg="git add "
 alias gs="git status"
 alias gst="git stash"
 alias gstp="git stash pop"
-
-# bun completions
-[ -s "/Users/charon/.bun/_bun" ] && source "/Users/charon/.bun/_bun"
