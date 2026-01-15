@@ -29,8 +29,5 @@ stow -D packagename  # remove a package
 | `spotify-player/` | Terminal Spotify client |
 | `starship/` | Cross-shell prompt |
 | `themes/` | Browser themes (Chrome) |
-| `zsh/` | Shell config (ZDOTDIR-based, only `.zshenv` in ~) |
+| `zsh/` | Shell config |
 
-## Portability
-
-The zsh config auto-detects platform (macOS/Linux) and gracefully handles missing tools with fallbacks. Works on a fresh machine with just git and curl.

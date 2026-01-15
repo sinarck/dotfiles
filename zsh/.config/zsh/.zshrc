@@ -4,8 +4,9 @@
     https://github.com/marlonrichert/zsh-snap.git $ZDOTDIR/.zsh-snap
 source $ZDOTDIR/.zsh-snap/znap.zsh
 
-# Prompt
+# Prompt 
 znap eval starship 'starship init zsh --print-full-init'
+znap prompt
 
 # Speed improvements (set early)
 DISABLE_AUTO_UPDATE="true"
@@ -65,7 +66,7 @@ path=(
 # Znap repos directory
 zstyle ':znap:*' repos-dir $ZDOTDIR/.zsh-plugins
 
-# Tab completion styles (before plugins)
+# Tab completion styles 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' group-name ''
@@ -118,6 +119,7 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=0.08
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-history-substring-search
 znap source zdharma-continuum/fast-syntax-highlighting
+znap source peterhurford/up.zsh
 
 # Arrow keys search history
 bindkey '^[[A' history-substring-search-up
@@ -130,13 +132,13 @@ znap eval bun-completion 'cat "$HOME/.bun/_bun"'
 
 # Lazy-load heavy tools on first use
 znap function _nvm nvm 'source "$NVM_DIR/nvm.sh"'
-compctl -K _nvm nvm
+compctl -K    _nvm nvm
 
 znap function _sdk sdk 'source "$SDKMAN_DIR/bin/sdkman-init.sh"'
-compctl -K _sdk sdk
+compctl -K    _sdk sdk
 
-znap function _fuck fuck 'znap eval thefuck-alias "thefuck --alias"'
-compctl -K _fuck fuck
+# thefuck - cached (runs once, stored)
+znap eval thefuck 'thefuck --alias'
 
 # Command aliases
 alias ls='eza --icons -1'

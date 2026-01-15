@@ -6,3 +6,4 @@ keybind = shift+enter=text:\n
 window-save-state = always
 cursor-style = bar
 macos-custom-icon = '~/.config/ghostty/icon.icns'
+confirm-close-surface = false
