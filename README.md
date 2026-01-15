@@ -5,13 +5,10 @@ Configuration files managed with [GNU Stow](https://www.gnu.org/software/stow/),
 ## Quick Start
 
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
-~/.dotfiles/install.sh
+git clone https://github.com/sinarck/dotfiles.git ~/.dotfiles
 ```
 
-The install script handles Homebrew, packages, stowing, and setting zsh as default.
-
-## Manual Setup
+## Setup
 
 ```bash
 cd ~/.dotfiles
@@ -24,14 +21,15 @@ stow -D packagename  # remove a package
 
 | Package | Description |
 |---------|-------------|
-| `zsh/` | Shell config (ZDOTDIR-based, only `.zshenv` in ~) |
-| `starship/` | Prompt |
-| `ghostty/` | Terminal |
 | `bat/` | Syntax highlighting |
 | `fastfetch/` | System info |
+| `ghostty/` | Terminal emulator |
 | `git/` | Git config |
-| `spotify-player/` | Terminal Spotify |
-| `opencode/` | AI coding assistant theme |
+| `opencode/` | AI coding assistant |
+| `spotify-player/` | Terminal Spotify client |
+| `starship/` | Cross-shell prompt |
+| `themes/` | Browser themes (Chrome) |
+| `zsh/` | Shell config (ZDOTDIR-based, only `.zshenv` in ~) |
 
 ## Portability
 
