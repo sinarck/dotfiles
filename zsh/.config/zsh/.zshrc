@@ -8,13 +8,6 @@ source $ZDOTDIR/.zsh-snap/znap.zsh
 znap eval starship 'starship init zsh --print-full-init'
 znap prompt
 
-# Speed improvements (set early)
-DISABLE_AUTO_UPDATE="true"
-DISABLE_MAGIC_FUNCTIONS="true"
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-DISABLE_COMPFIX="true"
-
 # Development tools and language managers
 export BUN_INSTALL="$HOME/.bun"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -30,8 +23,6 @@ export QMK_HOME="~/qmk_firmware"
 
 # History settings
 export HISTFILE="$ZDOTDIR/.zsh_history"
-export HISTSIZE=1000000
-export SAVEHIST=1000000
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
@@ -132,10 +123,10 @@ znap eval bun-completion 'cat "$HOME/.bun/_bun"'
 
 # Lazy-load heavy tools on first use
 znap function _nvm nvm 'source "$NVM_DIR/nvm.sh"'
-compctl -K    _nvm nvm
+compctl -K _nvm nvm
 
 znap function _sdk sdk 'source "$SDKMAN_DIR/bin/sdkman-init.sh"'
-compctl -K    _sdk sdk
+compctl -K _sdk sdk
 
 # thefuck - cached (runs once, stored)
 znap eval thefuck 'thefuck --alias'
@@ -150,7 +141,7 @@ alias ipaddr='ipconfig getifaddr en0'
 alias fetch='fastfetch'
 alias c='clear'
 alias spot="spotify_player"
-alias localserve="bpx live-server --port=5500 ."
+alias serve="bpx live-server --port=5500 ."
 
 # Git aliases
 alias ga="git add"

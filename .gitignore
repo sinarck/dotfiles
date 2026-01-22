@@ -5,3 +5,4 @@ chrome/.config/chrome/yoru-theme.pem
 *.pem
 *.pak
 *.crx
+opencode.json
