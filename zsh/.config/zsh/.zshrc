@@ -122,8 +122,14 @@ bindkey '^[[B' history-substring-search-down
 # Cached evals
 znap eval zoxide 'zoxide init zsh'
 znap eval try 'ruby ~/.local/try.rb init ~/Developer/tries'
+
+# Completions
 znap eval bun-completion 'cat "$HOME/.bun/_bun"'
 znap fpath _tailscale 'tailscale completion zsh'
+znap fpath _uv 'uv generate-shell-completion zsh' 
+znap fpath _uvx 'uvx --generate-shell-completion zsh' 
+znap fpath _rustup  'rustup  completions zsh'
+znap fpath _cargo   'rustup  completions zsh cargo'
 
 # Lazy-load heavy tools on first use
 znap function _nvm nvm 'source "$NVM_DIR/nvm.sh"'
