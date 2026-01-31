@@ -106,6 +106,9 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=#edeff0,bg=#2c2e2f'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=#df5b61'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=0.08
 
+# Subtle paste highlighting (fixes overly bright paste + stuck highlight on cursor move)
+zle_highlight=('paste:fg=#6e7072')
+
 # Plugins
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-history-substring-search
@@ -120,6 +123,7 @@ bindkey '^[[B' history-substring-search-down
 znap eval zoxide 'zoxide init zsh'
 znap eval try 'ruby ~/.local/try.rb init ~/Developer/tries'
 znap eval bun-completion 'cat "$HOME/.bun/_bun"'
+znap fpath _tailscale 'tailscale completion zsh'
 
 # Lazy-load heavy tools on first use
 znap function _nvm nvm 'source "$NVM_DIR/nvm.sh"'
