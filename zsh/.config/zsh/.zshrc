@@ -125,6 +125,7 @@ znap eval try 'ruby ~/.local/try.rb init ~/Developer/tries'
 
 # Completions
 znap eval bun-completion 'cat "$HOME/.bun/_bun"'
+znap eval brew 'brew shellenv'
 znap fpath _tailscale 'tailscale completion zsh'
 znap fpath _uv 'uv generate-shell-completion zsh' 
 znap fpath _uvx 'uvx --generate-shell-completion zsh' 
@@ -138,7 +139,6 @@ compctl -K _nvm nvm
 znap function _sdk sdk 'source "$SDKMAN_DIR/bin/sdkman-init.sh"'
 compctl -K _sdk sdk
 
-# thefuck - cached (runs once, stored)
 znap eval thefuck 'thefuck --alias'
 
 # Command aliases
@@ -151,7 +151,7 @@ alias ipaddr='ipconfig getifaddr en0'
 alias fetch='fastfetch'
 alias c='clear'
 alias spot="spotify_player"
-alias serve="bpx live-server --port=5500 ."
+alias serve="bunx live-server --port=5500 ."
 
 # Git aliases
 alias ga="git add"
